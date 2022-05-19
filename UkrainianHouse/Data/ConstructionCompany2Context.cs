@@ -52,19 +52,7 @@ namespace UkrainianHouse.Data
                 entity.HasKey(e => e.TransactionId)
                     .HasName("PK__Accounti__85C600AF63C5F428");
 
-                entity.ToTable("Accounting");
-
-                entity.HasIndex(e => e.EmployeeId, "index3");
-
-                entity.Property(e => e.TransactionId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("transaction_id");
-
-                entity.Property(e => e.DateId).HasColumnName("date_id");
-
-                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-
-                entity.Property(e => e.Salary).HasColumnName("salary");
+                entity.Property(e => e.TransactionId).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Date)
                     .WithMany(p => p.Accountings)
@@ -82,14 +70,6 @@ namespace UkrainianHouse.Data
                 entity.HasKey(e => e.EmployeeProjectId)
                     .HasName("PK__BridgeEm__048B301EC419EE96");
 
-                entity.ToTable("BridgeEmployeeProject");
-
-                entity.Property(e => e.EmployeeProjectId).HasColumnName("employee_project_id");
-
-                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-
-                entity.Property(e => e.ProjectId).HasColumnName("project_id");
-
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.BridgeEmployeeProjects)
                     .HasForeignKey(d => d.EmployeeId)
@@ -103,220 +83,73 @@ namespace UkrainianHouse.Data
 
             modelBuilder.Entity<Date>(entity =>
             {
-                entity.ToTable("Date");
-
-                entity.Property(e => e.DateId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("date_id");
-
-                entity.Property(e => e.CalendarDate)
-                    .HasColumnType("date")
-                    .HasColumnName("calendar_date");
-
-                entity.Property(e => e.Day).HasColumnName("day");
-
-                entity.Property(e => e.Month).HasColumnName("month");
-
-                entity.Property(e => e.Year).HasColumnName("year");
+                entity.Property(e => e.DateId).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<Employee>(entity =>
             {
-                entity.ToTable("Employee");
+                entity.Property(e => e.EmployeeId).ValueGeneratedNever();
 
-                entity.Property(e => e.EmployeeId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("employee_id");
+                entity.Property(e => e.FirstName).IsUnicode(false);
 
-                entity.Property(e => e.ActiveFlag).HasColumnName("active_flag");
+                entity.Property(e => e.LastName).IsUnicode(false);
 
-                entity.Property(e => e.Age).HasColumnName("age");
+                entity.Property(e => e.Phone).IsUnicode(false);
 
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("first_name");
-
-                entity.Property(e => e.LastName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("last_name");
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("phone");
-
-                entity.Property(e => e.Specialization)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("specialization");
+                entity.Property(e => e.Specialization).IsUnicode(false);
             });
 
             modelBuilder.Entity<EmployeeView>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToView("EmployeeView");
 
-                entity.Property(e => e.Address)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("address");
+                entity.Property(e => e.Address).IsUnicode(false);
 
-                entity.Property(e => e.CalendarDate)
-                    .HasColumnType("date")
-                    .HasColumnName("calendar_date");
+                entity.Property(e => e.City).IsUnicode(false);
 
-                entity.Property(e => e.City)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("city");
+                entity.Property(e => e.FirstName).IsUnicode(false);
 
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("first_name");
+                entity.Property(e => e.LastName).IsUnicode(false);
 
-                entity.Property(e => e.LastName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("last_name");
+                entity.Property(e => e.ProjectName).IsUnicode(false);
 
-                entity.Property(e => e.ProjectId).HasColumnName("project_id");
-
-                entity.Property(e => e.ProjectName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("project_name");
-
-                entity.Property(e => e.Salary).HasColumnName("salary");
-
-                entity.Property(e => e.Specialization)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("specialization");
-            });
-
-            modelBuilder.Entity<ErrorLog>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("ErrorLog");
-
-                entity.Property(e => e.ErrorMessage).HasMaxLength(4000);
-
-                entity.Property(e => e.ErrorProcedure).HasMaxLength(128);
+                entity.Property(e => e.Specialization).IsUnicode(false);
             });
 
             modelBuilder.Entity<Location>(entity =>
             {
-                entity.ToTable("Location");
+                entity.Property(e => e.LocationId).ValueGeneratedNever();
 
-                entity.Property(e => e.LocationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("location_id");
+                entity.Property(e => e.Address).IsUnicode(false);
 
-                entity.Property(e => e.Address)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("address");
+                entity.Property(e => e.City).IsUnicode(false);
 
-                entity.Property(e => e.City)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("city");
-
-                entity.Property(e => e.Country)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("country");
+                entity.Property(e => e.Country).IsUnicode(false);
             });
 
             modelBuilder.Entity<ManagerView>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToView("ManagerView");
 
-                entity.Property(e => e.Address)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("address");
+                entity.Property(e => e.Address).IsUnicode(false);
 
-                entity.Property(e => e.CalendarDate)
-                    .HasColumnType("date")
-                    .HasColumnName("calendar_date");
+                entity.Property(e => e.City).IsUnicode(false);
 
-                entity.Property(e => e.City)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("city");
-
-                entity.Property(e => e.OperationId).HasColumnName("operation_id");
-
-                entity.Property(e => e.ProjectId).HasColumnName("project_id");
-
-                entity.Property(e => e.ProjectName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("project_name");
+                entity.Property(e => e.ProjectName).IsUnicode(false);
             });
 
             modelBuilder.Entity<Material>(entity =>
             {
-                entity.ToTable("Material");
+                entity.Property(e => e.MaterialId).ValueGeneratedNever();
 
-                entity.Property(e => e.MaterialId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("material_id");
+                entity.Property(e => e.Comments).IsUnicode(false);
 
-                entity.Property(e => e.Comments)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("comments");
-
-                entity.Property(e => e.MaterialName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("material_name");
-
-                entity.Property(e => e.Price).HasColumnName("price");
+                entity.Property(e => e.MaterialName).IsUnicode(false);
             });
 
             modelBuilder.Entity<Operation>(entity =>
             {
-                entity.ToTable("Operation");
-
-                entity.HasIndex(e => e.ProjectId, "index1");
-
-                entity.HasIndex(e => e.MaterialId, "index2");
-
-                entity.Property(e => e.OperationId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("operation_id");
-
-                entity.Property(e => e.Count).HasColumnName("count");
-
-                entity.Property(e => e.DateId).HasColumnName("date_id");
-
-                entity.Property(e => e.MaterialId).HasColumnName("material_id");
-
-                entity.Property(e => e.ProjectId).HasColumnName("project_id");
+                entity.Property(e => e.OperationId).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Date)
                     .WithMany(p => p.Operations)
@@ -336,23 +169,9 @@ namespace UkrainianHouse.Data
 
             modelBuilder.Entity<Project>(entity =>
             {
-                entity.ToTable("Project");
+                entity.Property(e => e.ProjectName).IsUnicode(false);
 
-                entity.Property(e => e.ProjectId).HasColumnName("project_id");
-
-                entity.Property(e => e.LocationId).HasColumnName("location_id");
-
-                entity.Property(e => e.ProjectName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("project_name");
-
-                entity.Property(e => e.ProjectStatus)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("project_status");
+                entity.Property(e => e.ProjectStatus).IsUnicode(false);
 
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.Projects)
@@ -362,88 +181,33 @@ namespace UkrainianHouse.Data
 
             modelBuilder.Entity<ProjectView>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToView("ProjectView");
 
-                entity.Property(e => e.Address)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("address");
+                entity.Property(e => e.Address).IsUnicode(false);
 
-                entity.Property(e => e.CalendarDate)
-                    .HasColumnType("date")
-                    .HasColumnName("calendar_date");
+                entity.Property(e => e.City).IsUnicode(false);
 
-                entity.Property(e => e.City)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("city");
+                entity.Property(e => e.FirstName).IsUnicode(false);
 
-                entity.Property(e => e.Count).HasColumnName("count");
+                entity.Property(e => e.LastName).IsUnicode(false);
 
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("first_name");
+                entity.Property(e => e.MaterialName).IsUnicode(false);
 
-                entity.Property(e => e.LastName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("last_name");
-
-                entity.Property(e => e.MaterialName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("material_name");
-
-                entity.Property(e => e.ProjectId).HasColumnName("project_id");
-
-                entity.Property(e => e.ProjectName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("project_name");
-
-                entity.Property(e => e.StorageId).HasColumnName("storage_id");
+                entity.Property(e => e.ProjectName).IsUnicode(false);
             });
 
             modelBuilder.Entity<Status>(entity =>
             {
-                entity.ToTable("Status");
+                entity.Property(e => e.StatusId).ValueGeneratedNever();
 
-                entity.Property(e => e.StatusId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("status_id");
-
-                entity.Property(e => e.StatusName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("status_name");
+                entity.Property(e => e.StatusName).IsUnicode(false);
             });
 
             modelBuilder.Entity<Storage>(entity =>
             {
-                entity.ToTable("Storage");
+                entity.Property(e => e.StorageId).ValueGeneratedNever();
 
-                entity.Property(e => e.StorageId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("storage_id");
-
-                entity.Property(e => e.Comments)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("comments");
-
-                entity.Property(e => e.Count).HasColumnName("count");
-
-                entity.Property(e => e.MaterialId).HasColumnName("material_id");
+                entity.Property(e => e.Comments).IsUnicode(false);
 
                 entity.HasOne(d => d.Material)
                     .WithMany(p => p.Storages)
@@ -454,25 +218,11 @@ namespace UkrainianHouse.Data
 
             modelBuilder.Entity<Task>(entity =>
             {
-                entity.ToTable("Task");
+                entity.Property(e => e.TaskId).ValueGeneratedNever();
 
-                entity.Property(e => e.TaskId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("task_id");
+                entity.Property(e => e.EmpTaskInfo).IsUnicode(false);
 
-                entity.Property(e => e.EmpTaskInfo)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("emp_task_info");
-
-                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-
-                entity.Property(e => e.StatusId).HasColumnName("status_id");
-
-                entity.Property(e => e.TaskName)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("task_name");
+                entity.Property(e => e.TaskName).IsUnicode(false);
 
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.Tasks)

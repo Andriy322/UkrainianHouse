@@ -1,0 +1,95 @@
+﻿@model IEnumerable<UkrainianHouse.Models.EmployeeTask>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h1>Tasks</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.employeedetails.FirstName)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.employeedetails.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.employeedetails.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.employeedetails.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.employeedetails.Specialization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taskdetails.TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taskdetails.EmpTaskInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.statusdetails.StatusName)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeedetails.FirstName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.employeedetails.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.employeedetails.Age)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.employeedetails.Phone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.employeedetails.Specialization)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.taskdetails.TaskName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.taskdetails.EmpTaskInfo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.statusdetails.StatusName)
+            </td>
+
+
+
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.taskdetails.TaskId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.taskdetails.TaskId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.taskdetails.TaskId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
