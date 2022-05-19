@@ -1,0 +1,114 @@
+﻿@model IEnumerable<UkrainianHouse.Models.StorageMaterial>
+
+@{
+    ViewData["Title"] = "Storage";
+}
+
+<h1>Storage</h1>
+
+<style>
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+    }
+
+        .styled-table thead tr {
+            background-color: #434645;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            column-width: auto;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .styled-table tbody tr:last-of-type {
+                border-bottom: 2px solid #111111;
+            }
+</style>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <td>
+                Record number
+            </td>
+
+            <th>
+                @Html.DisplayNameFor(model => model.storagedetails.MaterialId)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.storagedetails.Material)
+
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.storagedetails.Count)
+
+            </th>
+
+            <th>
+                Price per unit
+            </th>
+
+            <th>
+                Storage info
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.storagedetails.StorageId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.materialdetails.MaterialId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.materialdetails.MaterialName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.storagedetails.Count)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.materialdetails.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.storagedetails.Comments)
+            </td>
+
+            <td style=" width:125px">
+                <a asp-action="Edit" asp-route-id="@item.materialdetails.MaterialId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.materialdetails.MaterialId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

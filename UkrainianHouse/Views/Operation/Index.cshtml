@@ -1,10 +1,10 @@
-﻿@model IEnumerable<UkrainianHouse.Models.ProjectLocation>
+﻿@model IEnumerable<UkrainianHouse.Models.MaterialOperations>
 
 @{
-    ViewData["Title"] = "Projects";
+    ViewData["Title"] = "Operations";
 }
 
-<h1>Projects</h1>
+<h1>Operations</h1>
 
 <style>
     .styled-table {
@@ -47,29 +47,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.projectsdetails.ProjectId)
+                @Html.DisplayNameFor(model => model.operationdetails.OperationId)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.projectdetails.ProjectId)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.projectdetails.ProjectName)
 
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.projectsdetails.ProjectName)
+                @Html.DisplayNameFor(model => model.operationdetails.Material)
 
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.projectsdetails.ProjectStatus)
+                @Html.DisplayNameFor(model => model.operationdetails.Count)
+
             </th>
+
+
             <th>
-                @Html.DisplayNameFor(model => model.projectsdetails.LocationId)
+                Price per unit
             </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.locationsdetails.Country)
+                @Html.DisplayNameFor(model => model.datedetails.CalendarDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.locationsdetails.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.projectsdetails.Location)
-            </th>
+
 
 
             <th></th>
@@ -80,31 +88,36 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.projectsdetails.ProjectId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.projectsdetails.ProjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.projectsdetails.ProjectStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.locationsdetails.LocationId)
+                @Html.DisplayFor(modelItem => item.operationdetails.OperationId)
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.locationsdetails.Country)
+                @Html.DisplayFor(modelItem => item.projectdetails.ProjectId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.locationsdetails.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.locationsdetails.Address)
+                @Html.DisplayFor(modelItem => item.projectdetails.ProjectName)
             </td>
 
-            <td style=" width:125px">
-                <a asp-action="Edit" asp-route-id="@item.projectsdetails.ProjectId">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.projectsdetails.ProjectId">Delete</a>
+            <td>
+                @Html.DisplayFor(modelItem => item.materialdetails.MaterialName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.operationdetails.Count)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.materialdetails.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.datedetails.CalendarDate)
+            </td>
+
+
+            <td style=" width = 125px;">
+                <a asp-action="Edit" asp-route-id="@item.operationdetails.OperationId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.operationdetails.OperationId">Delete</a>
             </td>
         </tr>
         }

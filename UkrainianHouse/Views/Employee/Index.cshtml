@@ -1,10 +1,10 @@
-﻿@model IEnumerable<UkrainianHouse.Models.EmployeeTask>
+﻿@model IEnumerable<UkrainianHouse.Models.EmployeeProject>
 
 @{
-    ViewData["Title"] = "Tasks";
+    ViewData["Title"] = "Employees";
 }
 
-<h1>Tasks</h1>
+<h1>Employees</h1>
 
 <style>
     .styled-table {
@@ -13,8 +13,8 @@
         font-size: 0.9em;
         font-family: sans-serif;
         min-width: 400px;
-        
     }
+
         .styled-table thead tr {
             background-color: #434645;
             color: #ffffff;
@@ -24,7 +24,7 @@
         .styled-table th,
         .styled-table td {
             padding: 12px 15px;
-           column-width: auto;
+            column-width: auto;
         }
 
         .styled-table tbody tr {
@@ -38,8 +38,6 @@
             .styled-table tbody tr:last-of-type {
                 border-bottom: 2px solid #111111;
             }
-
-
 </style>
 
 
@@ -49,19 +47,29 @@
 <table class="styled-table">
     <thead>
         <tr>
+
             <th>
-                @Html.DisplayNameFor(model => model.taskdetails.TaskId)
+                @Html.DisplayNameFor(model => model.bridgeEmployeedetails.EmployeeProjectId)
+
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.projectdetails.ProjectId)
 
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.employeedetails.EmployeeId)
 
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.projectdetails.ProjectName)
 
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.employeedetails.FirstName)
 
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.employeedetails.LastName)
             </th>
@@ -74,14 +82,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.employeedetails.Specialization)
             </th>
-            <th style=" width:200px">
-                @Html.DisplayNameFor(model => model.taskdetails.TaskName)
-            </th>
-            <th style=" width:150px">
-                @Html.DisplayNameFor(model => model.taskdetails.EmpTaskInfo)
-            </th>
-            <th style=" width:150px">
-                @Html.DisplayNameFor(model => model.statusdetails.StatusName)
+
+            <th>
+                @Html.DisplayNameFor(model => model.employeedetails.ActiveFlag)
             </th>
 
 
@@ -92,12 +95,23 @@
         @foreach (var item in Model)
         {
         <tr>
+
             <td>
-                @Html.DisplayFor(modelItem => item.taskdetails.TaskId)
+                @Html.DisplayFor(modelItem => item.bridgeEmployeedetails.EmployeeProjectId)
             </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.projectdetails.ProjectId)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.employeedetails.EmployeeId)
             </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.projectdetails.ProjectName)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.employeedetails.FirstName)
             </td>
@@ -118,24 +132,14 @@
                 @Html.DisplayFor(modelItem => item.employeedetails.Specialization)
             </td>
 
-            <td style=" width:200px">
-                @Html.DisplayFor(modelItem => item.taskdetails.TaskName)
+            <td>
+                @Html.DisplayFor(modelItem => item.employeedetails.ActiveFlag)
             </td>
-
-            <td style=" width:150px">
-                @Html.DisplayFor(modelItem => item.taskdetails.EmpTaskInfo)
-            </td>
-
-            <td style=" width:150px">
-                @Html.DisplayFor(modelItem => item.statusdetails.StatusName)
-            </td>
-
-
 
 
             <td style=" width:125px">
-                <a asp-action="Edit" asp-route-id="@item.taskdetails.TaskId">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.taskdetails.TaskId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.bridgeEmployeedetails.EmployeeProjectId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.bridgeEmployeedetails.EmployeeProjectId">Delete</a>
             </td>
         </tr>
         }
