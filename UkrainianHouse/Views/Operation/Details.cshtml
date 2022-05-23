@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<UkrainianHouse.Models.MaterialOperations>
 
 @{
-    ViewData["Title"] = "Operations";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Operations</h1>
+<h1>Details</h1>
 
 <style>
     .styled-table {
@@ -38,11 +38,13 @@
             .styled-table tbody tr:last-of-type {
                 border-bottom: 2px solid #111111;
             }
+
+            .styled-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
 </style>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="styled-table">
     <thead>
         <tr>
@@ -79,47 +81,48 @@
             </th>
 
 
-
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.operationdetails.OperationId)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.operationdetails.OperationId)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.projectdetails.ProjectId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.projectdetails.ProjectName)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.projectdetails.ProjectId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.projectdetails.ProjectName)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.materialdetails.MaterialName)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.materialdetails.MaterialName)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.operationdetails.Count)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.operationdetails.Count)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.materialdetails.Price)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.materialdetails.Price)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.datedetails.CalendarDate)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datedetails.CalendarDate)
+                </td>
 
-            <td style="width:200px">
-                <a asp-action="Edit" asp-route-id="@item.operationdetails.OperationId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.operationdetails.OperationId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.operationdetails.OperationId">Delete</a>
-            </td>
-        </tr>
+
+            </tr>
         }
     </tbody>
+
+
 </table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

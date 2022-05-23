@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<UkrainianHouse.Models.ProjectLocation>
 
 @{
-    ViewData["Title"] = "Projects";
+    ViewData["Title"] = "Projects details";
 }
 
-<h1>Projects</h1>
+<h1>Details</h1>
 
 <style>
     .styled-table {
@@ -38,11 +38,13 @@
             .styled-table tbody tr:last-of-type {
                 border-bottom: 2px solid #111111;
             }
+
+            .styled-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
 </style>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="styled-table">
     <thead>
         <tr>
@@ -102,14 +104,14 @@
                     @Html.DisplayFor(modelItem => item.locationsdetails.Address)
                 </td>
 
-                <td style="width:200px">
-                    <a asp-action="Edit" asp-route-id="@item.projectsdetails.ProjectId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.projectsdetails.ProjectId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.projectsdetails.ProjectId">Delete</a>
-                </td>
+                
             </tr>
         }
-
     </tbody>
 
+
 </table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

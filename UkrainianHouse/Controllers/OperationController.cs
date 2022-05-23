@@ -39,5 +39,31 @@ namespace UkrainianHouse.Controllers
 
             return View(multipletables);
         }
+
+        public IActionResult Details(int? id)
+        {
+            List<Project> projects = _context.Projects.ToList();
+
+            List<Operation> operations = _context.Operations.ToList();
+
+            List<Material> materials = _context.Materials.ToList();
+
+            List<Date> dates = _context.Dates.ToList();
+
+            var multipletable = from oper in operations
+                                 join mat in materials on oper.MaterialId equals mat.MaterialId into table1
+                                 from mat in table1.DefaultIfEmpty()
+
+                                 join dat in dates on oper.DateId equals dat.DateId into table2
+                                 from dat in table2.DefaultIfEmpty()
+
+                                 join p in projects on oper.ProjectId equals p.ProjectId into table3
+                                 from p in table3.DefaultIfEmpty()
+                                where oper.OperationId == id
+                                 select new MaterialOperations { projectdetails = p, operationdetails = oper, datedetails = dat, materialdetails = mat };
+
+
+            return View(multipletable);
+        }
     }
 }

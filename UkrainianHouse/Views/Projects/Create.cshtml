@@ -1,0 +1,39 @@
+﻿@model UkrainianHouse.Models.Project
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+@using (Html.BeginForm()) { 
+<div class="container">
+
+    <div class="form-group">
+        <label>Project name:</label>
+        <input class="form-control" name="ProjectName" placeholder="Enter name" />
+    </div>
+
+    <div class="form-group">
+        <label>Project status:</label>
+        <input class="form-control" name="ProjectStatus" placeholder="Enter status" />
+    </div>
+
+    <div class="form-group">
+        <label>Project location id:</label>
+        <input class="form-control" name="LocationId" placeholder="Enter location id" />
+    </div>
+
+    <div class="button">
+        <button>Submit</button>
+    </div>
+
+    <div style="margin:20px;">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+}
+
+
+
+

@@ -16,6 +16,7 @@ namespace UkrainianHouse.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             List<Project> projects = _context.Projects.ToList();
@@ -30,28 +31,72 @@ namespace UkrainianHouse.Controllers
             return View(multipletable);
         }
 
-        [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Details(int ? id)
         {
             List<Project> projects = _context.Projects.ToList();
             List<Location> locations = _context.Locations.ToList();
 
-            var variable = from p in projects
-                           join loc in locations on p.LocationId equals loc.LocationId into table1
-                           from loc in table1.DefaultIfEmpty()
-                           where p.ProjectId == id
-                           select new ProjectLocation { projectsdetails = p, locationsdetails = loc };
+            var multipletable = from p in projects
+                                join loc in locations on p.LocationId equals loc.LocationId into table1
+                                from loc in table1.DefaultIfEmpty()
+                                where p.ProjectId == id
+                                select new ProjectLocation { projectsdetails = p, locationsdetails = loc };
 
-            return View(variable);
-        }
-        [HttpPost]
-        public IActionResult Edit(ProjectLocation projectLocation)
+            return View(multipletable);
+        } 
+
+      
+        [HttpGet]
+        public IActionResult Create()
         {
-            _context.Attach(projectLocation);
-            _context.Attach(projectLocation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Project model)
+        {
+            Project newproject = new Project();
+            newproject.ProjectName = model.ProjectName;
+            newproject.ProjectStatus = model.ProjectStatus;
+            newproject.LocationId = model.LocationId;
+
+            _context.Projects.Add(newproject);
+            _context.SaveChanges();
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int ? id)
+        {
+            var item = _context.Projects.Find(id);
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Project model)
+        {
+            var item = _context.Projects.Where(x => x.ProjectId == model.ProjectId).First();
+            item.ProjectName = model.ProjectName;
+            item.ProjectStatus = model.ProjectStatus;
+            item.LocationId = model.LocationId;
+
+            _context.SaveChanges();
+            return View();
+        }
+
+
+
+
+        public IActionResult Delete(int ? id)
+        {
+            var item = _context.Projects.Where(x => x.ProjectId == id).First();
+
+            _context.Projects.Remove(item);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
+
         }
     }
 }

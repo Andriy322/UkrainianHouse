@@ -435,4 +435,11 @@ C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\R
 C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Storage\Index.cshtml.g.cs
 C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Employee\Index.cshtml.g.cs
 C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Accounting\Index.cshtml.g.cs
+C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Projects\Details.cshtml.g.cs
+C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Storage\Details.cshtml.g.cs
+C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Task\Details.cshtml.g.cs
+C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Operation\Details.cshtml.g.cs
+C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Employee\Details.cshtml.g.cs
+C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Accounting\Details.cshtml.g.cs
+C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Projects\Create.cshtml.g.cs
 C:\Andriy\3.1.Study\Course_work\UkrainianHouse\UkrainianHouse\obj\Debug\net5.0\Razor\Views\Projects\Edit.cshtml.g.cs

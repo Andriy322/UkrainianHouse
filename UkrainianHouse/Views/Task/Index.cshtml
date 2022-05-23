@@ -130,13 +130,12 @@
                 @Html.DisplayFor(modelItem => item.statusdetails.StatusName)
             </td>
 
-
-
-
-            <td style=" width:125px">
-                <a asp-action="Edit" asp-route-id="@item.taskdetails.TaskId">Edit</a> |
+            <td style="width:200px">
+                <a asp-action="Edit" asp-route-id="@item.taskdetails.TaskId">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.taskdetails.TaskId">Details</a> 
                 <a asp-action="Delete" asp-route-id="@item.taskdetails.TaskId">Delete</a>
             </td>
+
         </tr>
         }
     </tbody>

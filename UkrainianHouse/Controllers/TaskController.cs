@@ -32,6 +32,24 @@ namespace UkrainianHouse.Controllers
 
             return View(multipletable);
         }
-       
+
+        public IActionResult Details(int? id)
+        {
+            List<Employee> employees = _context.Employees.ToList();
+            List<Models.Task> tasks = _context.Tasks.ToList();
+            List<Status> statuses = _context.Statuses.ToList();
+
+            var multipletable = from e in employees
+                                join tas in tasks on e.EmployeeId equals tas.EmployeeId into table1
+                                from tas in table1.DefaultIfEmpty()
+                                join st in statuses on tas.StatusId equals st.StatusId into table2
+                                from st in table2.DefaultIfEmpty()
+                                where tas.TaskId == id
+                                select new EmployeeTask { employeedetails = e, taskdetails = tas, statusdetails = st };
+
+
+            return View(multipletable);
+        }
+
     }
 }
